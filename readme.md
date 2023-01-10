@@ -31,8 +31,9 @@ python manage.py loaddata khanto/fixtures/dados-khanto.json
 ## ⚙️ Pendências por falta de tempo útil
 
 1. Integração com Banco de Dados SQL [NÃO-CUMPRIDO]
-2. Aprimoramento de testes [NÃO-CUMPRIDO]
+2. Aprimoramento de testes de Views, Serializers e Templates [NÃO-CUMPRIDO]
 3. Personalização do front [NÃO-CUMPRIDO]
+4. Finaliz da Classe SearchView [NÃO-CUMPRIDO]
 
 ## ✒️ Autores
 

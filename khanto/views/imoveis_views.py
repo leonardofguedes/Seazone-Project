@@ -3,7 +3,7 @@ from rest_framework import generics
 from khanto.forms.imovel_forms import ImovelForm
 from khanto.models import Imovel
 from khanto.serializers import ImovelSerializer
-from django.views.generic import DeleteView, View
+from django.views.generic import DeleteView
 
 
 class ImovelList(generics.ListAPIView):
@@ -50,7 +50,7 @@ class ImovelUpdateView(generics.UpdateAPIView):
 
     
     def post(self, request, *args, **kwargs):
-        imovel = get_object_or_404(Imovel, pk=self.kwargs['codigoImovel'])
+        imovel = get_object_or_404(Imovel, pk=self.kwargs[''])
         form = self.form_class(request.POST, instance=imovel)
         if form.is_valid():
             form.save()
@@ -77,11 +77,3 @@ class ImovelDeleteView(DeleteView):
         success_url = self.get_success_url()
         self.object.delete()
         return redirect(success_url)
-
-class ImovelSearchView(View):
-    def get(self, request):
-        codigo_imovel = request.GET.get('codigoImovel')
-        imoveis = Imovel.objects.filter(id=codigo_imovel)
-        return render(request, 'imoveis/templates/imovel_search_results.html', {'imoveis': imoveis})
-
-
