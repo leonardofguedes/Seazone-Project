@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Imóveis</title>
+    <style>
+        /* Define o estilo da tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        /* Define o estilo dos botões de ação */
+        .imovel-actions {
+            display: flex;
+        }
+
+        .imovel-actions button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Imóveis</h1>
+    <form method="get" action="{% url 'imovel-search' %}">
+        <input type="text" name="codigo_imovel" placeholder="Pesquisar imóvel por código">
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </form>
+    
+
+
+    <!-- Exibe a lista de imóveis -->
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Limite de Hóspedes</th>
+            <th>Banheiros</th>
+            <th>Aceita Animais</th>
+            <th>Valor de Limpeza</th>
+            <th>Data de Ativação</th>
+            <th>Ações</th>
+        </tr>
+        {% if imoveis %}
+        {% for imovel in imoveis %}
+        <tr>
+            <td>{{ imovel.codigo_imovel }}</td>
+            <td>{{ imovel.limite_hospedes }}</td>
+            <td>{{ imovel.banheiros }}</td>
+            <td>{% if imovel.aceita_animais %}Sim{% else %}Não{% endif %}</td>
+            <td>{{ imovel.valor_limpeza }}</td>
+            <td>{{ imovel.data_ativacao }}</td>
+            <td class="imovel-actions">
+                <a href="{% url 'imovel_update' imovel.id %}" class="btn btn-primary">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="7">Sem imóveis</td>
+        </tr>
+    {% endif %}
+    </table>
+    <div class="imovel-actions">
+        <a href="{% url 'imovel_create' %}" class="btn btn-primary">Adicionar um novo</a>
+    </div>
+    <button type="button" onclick="window.location='{% url 'home' %}';">Voltar para a home</button>  
+    </div>
+</body>
+</html>
+

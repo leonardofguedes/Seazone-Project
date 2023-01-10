@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Editar Anúncio</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+</div>
+
+<button type="button" onclick="window.location='{% url 'anuncio-list' %}';">Voltar para a lista de anúncios</button>

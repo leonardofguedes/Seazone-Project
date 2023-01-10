@@ -1,0 +1,9 @@
+  <h1>Criar Anúncio</h1>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Criar</button>
+  </form>
+
+  <button type="button" onclick="window.location='{% url 'anuncio-list' %}';">Voltar para a lista de imóveis</button>
+

@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from rest_framework import generics
-from .forms import ImovelForm
-from .models import Imovel
-from .serializers import ImovelSerializer
+from khanto.forms.imovel_forms import ImovelForm
+from khanto.models import Imovel
+from khanto.serializers import ImovelSerializer
 from django.views.generic import DeleteView, View
 
 
@@ -12,7 +12,7 @@ class ImovelList(generics.ListAPIView):
     
     def get(self, request):
         imoveis = Imovel.objects.all()
-        return render(request, 'imovel_list.html', {'imoveis': imoveis})
+        return render(request, 'imoveis/templates/imovel_list.html', {'imoveis': imoveis})
 
 class ImovelDetail(generics.RetrieveAPIView):
     queryset = Imovel.objects.all()
@@ -21,7 +21,7 @@ class ImovelDetail(generics.RetrieveAPIView):
 class ImovelCreateView(generics.CreateAPIView):
     model = Imovel
     form_class = ImovelForm
-    template_name = 'imovel_create.html'
+    template_name = 'imoveis/templates/imovel_create.html'
     success_url = 'imovel-list'
     serializer_class = ImovelSerializer
 
@@ -39,8 +39,8 @@ class ImovelCreateView(generics.CreateAPIView):
 class ImovelUpdateView(generics.UpdateAPIView):
     model = Imovel
     form_class = ImovelForm
-    template_name = 'imovel_update.html' 
-    success_url = 'imovel-list'
+    template_name = 'imoveis/templates/imovel_update.html' 
+    success_url = 'imoveis/templates/imovel-list'
     serializer_class = ImovelSerializer
     
     def get(self, request, *args, **kwargs):
@@ -60,8 +60,8 @@ class ImovelUpdateView(generics.UpdateAPIView):
 
 class ImovelDeleteView(DeleteView):
     model = Imovel
-    template_name = 'imovel_update.html'
-    success_url = 'imovel-list'
+    template_name = 'imoveis/templates/imovel_update.html'
+    success_url = 'imoveis/templates/imovel-list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -81,7 +81,7 @@ class ImovelDeleteView(DeleteView):
 class ImovelSearchView(View):
     def get(self, request):
         codigo_imovel = request.GET.get('codigo_imovel')
-        imoveis = Imovel.objects.filter(codigo_imovel=codigo_imovel)
-        return render(request, 'imovel_search_results.html', {'imoveis': imoveis})
+        imoveis = Imovel.objects.filter(id=codigo_imovel)
+        return render(request, 'imoveis/templates/imovel_search_results.html', {'imoveis': imoveis})
 
 

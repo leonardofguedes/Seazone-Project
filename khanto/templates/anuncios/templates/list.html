@@ -1,0 +1,35 @@
+<style>
+  body {
+    background-color: blue;
+  }
+  
+  table {
+    background-color: white;
+    margin: 0 auto;
+  }
+</style>
+
+<table class="center">
+  <tr>
+    <th>Imóvel</th>
+    <th>Plataforma</th>
+    <th>Taxa da plataforma</th>
+    <th>Data de criação</th>
+    <th>Data de atualização</th>
+    <th>Editar</th
+  </tr>
+  {% for anuncio in anuncios %}
+  <tr>
+    <td>{{ anuncio.imovel }}</td>
+    <td>{{ anuncio.plataforma }}</td>
+    <td>{{ anuncio.taxa_plataforma }}</td>
+    <td>{{ anuncio.data_criacao }}</td>
+    <td>{{ anuncio.data_atualizacao }}</td>
+    <td><a href="{% url 'anuncio_update' anuncio.pk %}">Editar</a></td>
+  </tr>
+  {% endfor %}
+  <div class="anuncio-actions">
+    <button><a href="{% url 'anuncio_create' %}" class="btn btn-primary">Adicionar um novo</a></button>
+</div>
+<button type="button" onclick="window.location='{% url 'home' %}';">Voltar para a home</button>
+</table>

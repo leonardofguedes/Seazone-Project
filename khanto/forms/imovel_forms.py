@@ -1,5 +1,5 @@
 from django import forms
-from .models import Imovel
+from khanto.models import Imovel
 
 class ImovelForm(forms.ModelForm):
     class Meta:

@@ -1,12 +1,27 @@
 from django.db import models
 
-
 class Imovel(models.Model):
-    codigo_imovel = models.CharField(max_length=200)
-    limite_hospedes = models.IntegerField()
-    quantidade_banheiros = models.IntegerField()
-    aceita_animais = models.BooleanField(default=False)
-    valor_limpeza = models.DecimalField(max_digits=8, decimal_places=2)
+    limite_hospedes = models.PositiveIntegerField()
+    banheiros = models.PositiveIntegerField(default='1')
+    animais = models.BooleanField(default=True)
+    valor_limpeza = models.FloatField()
     data_ativacao = models.DateField()
-    criado_em = models.DateTimeField(auto_now_add=True)
-    atualizado_em = models.DateTimeField(auto_now=True)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+
+class Anuncio(models.Model):
+    imovel = models.ForeignKey(Imovel, on_delete=models.CASCADE)
+    plataforma = models.CharField(max_length=255)
+    taxa_plataforma = models.FloatField()
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+
+class Reserva(models.Model):
+    anuncio = models.ForeignKey(Anuncio, on_delete=models.CASCADE)
+    checkin = models.DateField()
+    checkout = models.DateField()
+    preco_total = models.FloatField()
+    comentario = models.CharField(max_length=255)
+    hospedes = models.PositiveIntegerField()
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
