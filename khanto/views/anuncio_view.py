@@ -5,6 +5,7 @@ from khanto.forms.anuncio_form import AnuncioForm
 from khanto.models import Anuncio
 from khanto.serializers import AnuncioSerializer
 from django.views.generic import View
+from django.db.models import Q
 
 class AnuncioList(generics.ListAPIView):
     queryset = Anuncio.objects.all()
@@ -56,4 +57,19 @@ class AnuncioUpdateView(generics.UpdateAPIView):
             form.save()
             return redirect(self.success_url)
         return render(request, self.template_name, {'form': form, 'anuncio': anuncio})
+
+class AnuncioSearchView(View):
+    def get(self, request):
+        query = request.GET.get('q', '') # adicionado valor default vazio para query
+        if query: # verificando se query foi passada
+            anuncios = Anuncio.objects.filter(
+                Q(imovel__codigoImovel__icontains=query) |
+                Q(plataforma__icontains=query) |
+                Q(taxa_plataforma=query) |
+                Q(data_criacao__date=query) |
+                Q(data_atualizacao__date=query)
+            )
+        else:
+            anuncios = Anuncio.objects.all()
+        return render(request, 'anuncios/templates/anuncio_search_result.html', {'anuncios': anuncios})
 

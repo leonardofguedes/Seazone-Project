@@ -3,14 +3,32 @@
 <head>
     <title>Khanto</title>
     <style>
+        /* Define o estilo do container */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Cria duas colunas com o mesmo tamanho */
+            height: 100vh; /* Define a altura do container como 100% da tela */
+            position: relative; /* Adiciona a propriedade position para permitir o uso de z-index */
+        }
+        
+        /* Define o estilo da imagem de fundo */
+        .bg-img {
+            position: absolute; /* Posiciona a imagem no fundo */
+            left: 0;
+            top: 0;
+            width: 100%; /* Faz com que a imagem ocupe toda a largura */
+            height: 100%; /* Faz com que a imagem ocupe toda a altura */
+            z-index: -1; /* Coloca a imagem abaixo do conteúdo */
+        }
+
         /* Define o estilo do menu */
         .menu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: black;
             color: white;
             padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            grid-column: 1 / 2; /* Especifica a primeira coluna */
         }
 
         .menu a {
@@ -21,25 +39,27 @@
 
         /* Define o estilo do título */
         .title {
-            position: absolute;
-            top: 50%;
-            left: 80%;
-            transform: translate(-50%, -50%);
             color: whitesmoke;
             font-size: 72px;
+            text-align: center; /* Alinha o texto no meio */
+            grid-column: 2 / 3; /* Especifica a segunda coluna */
         }
-       
     </style>
 </head>
 <body style="background-color: black;">
-    <!-- Menu -->
-    <div class="menu">
-        <a href="/imovel/">Imóveis</a>
-        <a href="/anuncio/">Anúncios</a>
-        <a href="/reserva/">Reservas</a>
-    </div>
+    <!-- Container -->
+    <div class="container">
+        <!-- Imagem de fundo -->
+        <img class="bg-img" src="" alt="Imagem de fundo">
+        <!-- Menu -->
+        <div class="menu">
+            <a href="/imovel/">Imóveis</a>
+            <a href="/anuncio/">Anúncios</a>
+            <a href="/reserva/">Reservas</a>
+        </div>
 
-    <!-- Título -->
-    <div class="title">Khanto</div>
+        <!-- Título -->
+        <div class="title">Khanto</div>
+    </div>
 </body>
 </html>

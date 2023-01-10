@@ -5,7 +5,7 @@
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Editar</button>
     </form>
-    <form method="post" action="{% url 'imovel-delete' imovel.id %}">
+    <form method="post" action="{% url 'imovel-delete' imovel.codigoImovel %}">
         {% csrf_token %}
         <input type="submit" value="Delete">
     </form>

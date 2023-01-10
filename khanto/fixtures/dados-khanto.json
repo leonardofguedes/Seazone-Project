@@ -1,0 +1,187 @@
+[
+    {
+        "model": "khanto.Imovel",
+        "pk": 1,
+        "fields": {
+            "limite_hospedes": 7,
+            "banheiros": 1,
+            "animais": true,
+            "valor_limpeza": 150.00,
+            "data_ativacao": "2022-01-01"
+        }
+    },
+    {
+        "model": "khanto.Imovel",
+        "pk": 2,
+        "fields": {
+            "limite_hospedes": 3,
+            "banheiros": 1,
+            "animais": true,
+            "valor_limpeza": 120.00,
+            "data_ativacao": "2022-01-01"
+        }
+    },
+    {
+        "model": "khanto.Imovel",
+        "pk": 3,
+        "fields": {
+            "limite_hospedes": 4,
+            "banheiros": 2,
+            "animais": true,
+            "valor_limpeza": 100.00,
+            "data_ativacao": "2022-01-01"
+        }
+    },
+    {
+        "model": "khanto.Imovel",
+        "pk": 4,
+        "fields": {
+            "limite_hospedes": 5,
+            "banheiros": 3,
+            "animais": true,
+            "valor_limpeza": 100.00,
+            "data_ativacao": "2022-01-01"
+        }
+    },
+    {
+        "model": "khanto.Anuncio",
+        "pk": 1,
+        "fields": {
+            "imovel": 1,
+            "plataforma": "Airbnb",
+            "taxa_plataforma": 20.00
+        }
+    },
+    {
+        "model": "khanto.Anuncio",
+        "pk": 2,
+        "fields": {
+            "imovel": 3,
+            "plataforma": "Gool",
+            "taxa_plataforma": 20.00
+        }
+    },
+    {
+        "model": "khanto.Anuncio",
+        "pk": 3,
+        "fields": {
+            "imovel": 4,
+            "plataforma": "Google",
+            "taxa_plataforma": 10.00
+        }
+    },
+    {
+        "model": "khanto.Anuncio",
+        "pk": 4,
+        "fields": {
+            "imovel": 2,
+            "plataforma": "Mercado Livre",
+            "taxa_plataforma": 20.00
+        }
+    },
+    {
+        "model": "khanto.Anuncio",
+        "pk": 5,
+        "fields": {
+            "imovel": 4,
+            "plataforma": "Imobilius",
+            "taxa_plataforma": 25.00
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 1,
+        "fields": {
+            "anuncio": 1,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 400.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 2
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 2,
+        "fields": {
+            "anuncio": 1,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 400.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 2
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 3,
+        "fields": {
+            "anuncio": 1,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 400.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 2
+        }
+    },{
+        "model": "khanto.Reserva",
+        "pk": 4,
+        "fields": {
+            "anuncio": 1,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 400.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 6
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 5,
+        "fields": {
+            "anuncio": 3,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 500.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 3
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 6,
+        "fields": {
+            "anuncio": 2,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 100.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 5
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 7,
+        "fields": {
+            "anuncio": 4,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 600.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 2
+        }
+    },
+    {
+        "model": "khanto.Reserva",
+        "pk": 8,
+        "fields": {
+            "anuncio": 2,
+            "checkin": "2022-01-15",
+            "checkout": "2022-01-20",
+            "preco_total": 500.00,
+            "comentario": "Ótimo imóvel, recomendo!",
+            "hospedes": 2
+        }
+    }
+]
+

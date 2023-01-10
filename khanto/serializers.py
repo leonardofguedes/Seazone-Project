@@ -4,7 +4,7 @@ from .models import Imovel, Anuncio, Reserva
 class ImovelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Imovel
-        fields = ('id', 'limite_hospedes', 'banheiros', 'animais', 'valor_limpeza', 'data_ativacao', 'data_criacao', 'data_atualizacao')
+        fields = ('id', 'codigoImovel', 'limite_hospedes', 'banheiros', 'animais', 'valor_limpeza', 'data_ativacao', 'data_criacao', 'data_atualizacao')
 
 class AnuncioSerializer(serializers.ModelSerializer):
     class Meta:

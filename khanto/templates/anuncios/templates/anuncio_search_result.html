@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <title>Reservas</title>
@@ -27,6 +28,7 @@
       cursor: pointer;
       font-size: 16px;
     }
+
     #search-bar {
         width: 100%;
         height: 10vh;
@@ -36,7 +38,7 @@
       }
     
     .search-box {
-        width: 60%;
+        width: 50%;
         height: 30px;
         border-radius: 40px;
         border: 2px solid #ccc;
@@ -50,53 +52,44 @@
         width: 90%;
         border-color: #555;
       }
+
   </style>
 </head>
 <body>
   <div id="search-bar">
-    <form action="{% url 'anuncio-search' %}" method="get">
+    <form>
       <input type="text" class="search-box" placeholder="Pesquisar...">
     </form>
   </div>
   <table>
     <tr>
-        <th>Lista de Imóveis</th>
-        <th>Código</th>
-        <th>Limite de Hóspedes</th>
-        <th>Banheiros</th>
-        <th>Aceita Animais</th>
-        <th>Valor de Limpeza</th>
-        <th>Data de Ativação</th>
-        <th>Ações</th>
+      <th>Anúncios</th>
+      <th>Imovel</th>
+      <th>Plataforma</th>
+      <th>Taxa da Plataforma</th>
+      <th>Criado em</th>
+      <th>Atualizado em</th>
+      <th>Ações</th>
     </tr>
-    {% if imoveis %}
-        {% for imovel in imoveis %}
-        <tr>
-            <td></td>
-            <td>{{ imovel.codigoImovel }}</td>
-            <td>{{ imovel.limite_hospedes }}</td>
-            <td>{{ imovel.banheiros }}</td>
-            <td>{% if imovel.aceita_animais %}Sim{% else %}Não{% endif %}</td>
-            <td>{{ imovel.valor_limpeza }}</td>
-            <td>{{ imovel.data_ativacao }}</td>
-            <td>
-              <form method="post" action="{% url 'imovel_update' imovel.codigoImovel %}">
-                {% csrf_token %}
-                <input type="submit" value="Editar">
-              </form>
-            </td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <tr>
-            <td colspan="7">Sem imóveis</td>
-        </tr>
-        {% endif %}
+    {% for anuncio in anuncios %}
+      <tr>
+        <td></td>
+        <td>{{ anuncio.imovel }}</td>
+        <td>{{ anuncio.plataforma }}</td>
+        <td>{{ anuncio.taxa_plataforma }}</td>
+        <td>{{ anuncio.data_criacao }}</td>
+        <td>{{ anuncio.data_atualizacao }}</td>
+        <td><a href="{% url 'anuncio_update' anuncio.pk %}">Editar</a></td>
+      </tr>
+    {% endfor %}
+    {% if not anuncios %} 
+        <p>Nenhum imóvel encontrado</p>
+    {% endif %}
   </table>
 
   <div>
     <a href="{% url 'home' %}"><button class="btn">Voltar</button></a>
-    <a href="{% url 'imovel_create' %}"><button class="btn">Adicionar Imóvel</button></a>
+    <a href="{% url 'anuncio_create' %}"><button class="btn">Criar Anúncio</button></a>
   </div>
 </body>
 </html>

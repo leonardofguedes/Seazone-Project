@@ -44,13 +44,13 @@ class ImovelUpdateView(generics.UpdateAPIView):
     serializer_class = ImovelSerializer
     
     def get(self, request, *args, **kwargs):
-        imovel = get_object_or_404(Imovel, pk=self.kwargs['pk'])
+        imovel = get_object_or_404(Imovel, pk=self.kwargs['codigoImovel'])
         form = self.form_class(instance=imovel)
         return render(request, self.template_name, {'form': form, 'imovel': imovel})
 
     
     def post(self, request, *args, **kwargs):
-        imovel = get_object_or_404(Imovel, pk=self.kwargs['pk'])
+        imovel = get_object_or_404(Imovel, pk=self.kwargs['codigoImovel'])
         form = self.form_class(request.POST, instance=imovel)
         if form.is_valid():
             form.save()
@@ -80,7 +80,7 @@ class ImovelDeleteView(DeleteView):
 
 class ImovelSearchView(View):
     def get(self, request):
-        codigo_imovel = request.GET.get('codigo_imovel')
+        codigo_imovel = request.GET.get('codigoImovel')
         imoveis = Imovel.objects.filter(id=codigo_imovel)
         return render(request, 'imoveis/templates/imovel_search_results.html', {'imoveis': imoveis})
 
